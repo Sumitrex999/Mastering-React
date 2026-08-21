@@ -1,34 +1,22 @@
-import './App.css'
-import{useRef} from 'react'
-
-function App() {
-
-  const inputRef = useRef(null);
-  function handleFocus() {
-    const input = inputRef.current.type;
-    console.log(input);
-    inputRef.current.focus();
-  }
-
-
-  return (
-    <div className="container">
-
-      <h1>Learning useRef</h1>
-
-      <input 
-      ref={inputRef} 
-      type="text"
-      placeholder="Enter your name"
-      />
-
-      <button onClick={handleFocus}>
-        Focus Input
-        </button>
-
-
+const Card = ({title}) =>{
+  return(
+    <div>
+      <h1>{title}</h1>
     </div>
   )
 }
 
-export default App
+
+const App = ()=> {
+  return(
+    <div>
+      <h1>Hello React</h1>
+      <Card title="PK 2"/>
+      <Card title="Bahubali 2"/>
+      <Card title="Don 2"/>
+      
+    </div>
+  )
+}
+
+export default App;
