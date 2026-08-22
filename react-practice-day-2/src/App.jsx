@@ -1,23 +1,18 @@
+import Movie from "./components/Movie";
 
 const App = () => {
-  const isLogin = true;
-  const isAdmin = true;
+  const movies = [
+    {id:1, title:"Inception", year:2010},
+    {id:2, title:"Interstellar", year:2014},
+    {id:3, title:"The Dark Knight", year:2008},
+  ]
   return (
     <div>
-      {
-        isLogin?(
-          <>
-            <h1>Welcome Rex</h1>
-            <button>Logout</button>
-            <br />
-            {isAdmin && <button>Delete User</button>}
-
-          </>
-          
-        ):(
-          <h1>Please Login</h1>
-        )
-      }
+      {movies.map((movie)=>(
+        <Movie key={movie.id}>
+          <h1>{movie.title}-{movie.year}</h1>
+        </Movie>
+      ))}
     </div>
   )
 }
