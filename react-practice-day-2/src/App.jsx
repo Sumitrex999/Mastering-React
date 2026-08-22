@@ -1,26 +1,25 @@
-import Card from "./components/Card";
-import img from "./assets/blackCoat.jpg";
 
 const App = () => {
+  const handleClick = (event)=>{
+    console.log("Button Clicked!");
+    console.log(event.target.textContent);
+  }
   return (
     <div>
-      <Card>
-        <h2>Rex</h2>
-        <p>Frontend Engineer</p>
-      </Card>
-      <br/>
-      <br/>
-      <Card>
-        <h2>Sumit</h2>
-        <p>Backend Engineer</p>
-      </Card>
-      <br/>
-      <br/>
-      <Card>
-        <img src={img} 
-        alt="Girl in a jacket" 
-        />
-      </Card>
+      <h1 className="text-3xl">React Events</h1>
+      <br />
+      <br />
+      <button onClick={handleClick}>
+        like
+      </button>
+      <br />
+      <button onClick={handleClick}>
+        dislike
+      </button>
+      <br />
+      <button onClick={handleClick}>
+        Share
+      </button>
     </div>
   )
 }
