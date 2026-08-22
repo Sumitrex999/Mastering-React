@@ -1,25 +1,23 @@
 
 const App = () => {
-  const handleClick = (event)=>{
-    console.log("Button Clicked!");
-    console.log(event.target.textContent);
-  }
+  const isLogin = true;
+  const isAdmin = true;
   return (
     <div>
-      <h1 className="text-3xl">React Events</h1>
-      <br />
-      <br />
-      <button onClick={handleClick}>
-        like
-      </button>
-      <br />
-      <button onClick={handleClick}>
-        dislike
-      </button>
-      <br />
-      <button onClick={handleClick}>
-        Share
-      </button>
+      {
+        isLogin?(
+          <>
+            <h1>Welcome Rex</h1>
+            <button>Logout</button>
+            <br />
+            {isAdmin && <button>Delete User</button>}
+
+          </>
+          
+        ):(
+          <h1>Please Login</h1>
+        )
+      }
     </div>
   )
 }
