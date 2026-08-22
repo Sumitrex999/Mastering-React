@@ -1,18 +1,16 @@
-import Movie from "./components/Movie";
+import UserCard from "./components/UserCard";
 
 const App = () => {
-  const movies = [
-    {id:1, title:"Inception", year:2010},
-    {id:2, title:"Interstellar", year:2014},
-    {id:3, title:"The Dark Knight", year:2008},
+  const users = [
+    {id:1, name:"Rex"},
+    {id:2, name:"Sumit"},
+    {id:3, name:"Amit"},
   ]
   return (
     <div>
-      {movies.map((movie)=>(
-        <Movie key={movie.id}>
-          <h1>{movie.title}-{movie.year}</h1>
-        </Movie>
-      ))}
+      {users.map((user)=>{
+        return <UserCard key={user.id} name={user.name} id={user.id}/>
+      })}
     </div>
   )
 }
