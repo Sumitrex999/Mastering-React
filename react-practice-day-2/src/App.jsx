@@ -1,34 +1,31 @@
 import { useState } from "react";
 
 const App = () => {
-  const [product, setProduct] = useState({
-    name:"Laptop",
-    price:35000,
-    stock:10,
-  });
-  const changeName = ()=>(setProduct({
-    ...product,
-    name:"Computer"
-  }));
-  const increasePrice = ()=>{
-    setProduct((prevProduct)=>{
-      return{
-        ...prevProduct,
-        price:prevProduct.price + 1000,
-      }
-    })
-  }
-  const decreaseStock = ()=>{
-    setProduct((prevProduct)=>({
-      ...prevProduct,
-      stock: prevProduct.stock - 1,
-    }))
-  }
+    const [todos, setTodos] = useState([
+        {id:1, title:"Learn React"},
+        {id:2, title:"Learn JavaScript"},
+    ]);
+    const addItem = ()=>{
+        setTodos([
+            ...todos,
+            {id:3, title:"Learn MERN"}
+        ]);
+    }
+    const deleteTodo = (id)=>{
+        setTodos(todos.filter((todo)=>(todo.id !== id)));
+    }
   return (
     <div>
-      <p onClick={changeName}>{product.name} </p>
-      <p onClick={increasePrice}>{product.price} </p>
-      <p onClick={decreaseStock}>{product.stock} </p>
+      <h1>TODO LIST:</h1>
+      <input type="text" placeholder="Enter the Todo Item" />
+      <button onClick={addItem}>Add</button>
+      {todos.map((todo)=>(
+        <div key={todo.id}>
+            <p>{todo.title} </p>
+            <button onClick={()=>{deleteTodo(todo.id)}}>Delete</button>
+        </div>
+      ))}
+
     </div>
   )
 }
