@@ -1,16 +1,18 @@
-import UserCard from "./components/UserCard";
 
 const App = () => {
-  const users = [
-    {id:1, name:"Rex"},
-    {id:2, name:"Sumit"},
-    {id:3, name:"Amit"},
-  ]
+  const handleSubmit = (event) =>{
+    event.preventDefault();
+    console.log(event.target.elements.name.value);
+    console.log(event.target.elements.email.value);
+  }
   return (
     <div>
-      {users.map((user)=>{
-        return <UserCard key={user.id} name={user.name} id={user.id}/>
-      })}
+      <form onSubmit={handleSubmit}>
+        <input name="name" type="text" placeholder="Enter the Name" />
+        <input name="email" type="text" placeholder="Enter the Email" />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   )
 }
