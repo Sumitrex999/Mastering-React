@@ -1,29 +1,36 @@
-import {useState} from "react";
+import { useState } from "react";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-  const increaseCount = ()=>{
-      setCount((prev)=>prev+5);
-      console.log(count);
+  const [product, setProduct] = useState({
+    name:"Laptop",
+    price:35000,
+    stock:10,
+  });
+  const changeName = ()=>(setProduct({
+    ...product,
+    name:"Computer"
+  }));
+  const increasePrice = ()=>{
+    setProduct((prevProduct)=>{
+      return{
+        ...prevProduct,
+        price:prevProduct.price + 1000,
+      }
+    })
   }
-  const decreaseCount = ()=>{
-      setCount((prev)=>prev-5);
-      console.log(count);
+  const decreaseStock = ()=>{
+    setProduct((prevProduct)=>({
+      ...prevProduct,
+      stock: prevProduct.stock - 1,
+    }))
   }
-  const resetCount = ()=>{
-      setCount(0);
-      console.log(count);
-  }
-
   return (
     <div>
-      <h1 className="text-5xl font-bold">Counter</h1>
-      <h1 className="text-2xl font-bold">{count} </h1>
-      <button className="text-1xl font-bold border-2" onClick={increaseCount}>increase(+)</button>
-      <button className="text-1xl font-bold border-2" onClick={decreaseCount}>decrease(-)</button>
-      <button className="text-1xl font-bold border-2" onClick={resetCount}>reset</button>
+      <p onClick={changeName}>{product.name} </p>
+      <p onClick={increasePrice}>{product.price} </p>
+      <p onClick={decreaseStock}>{product.stock} </p>
     </div>
   )
-} 
+}
 
 export default App
