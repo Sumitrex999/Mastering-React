@@ -1,20 +1,18 @@
+import {useState} from "react";
 
 const App = () => {
-  const handleSubmit = (event) =>{
-    event.preventDefault();
-    console.log(event.target.elements.name.value);
-    console.log(event.target.elements.email.value);
+  const [count, setCount] = useState(0);
+  const increaseCount = ()=>{
+      setCount(count+1);
+      console.log(count+1);
   }
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input name="name" type="text" placeholder="Enter the Name" />
-        <input name="email" type="text" placeholder="Enter the Email" />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+      <h1>{count} </h1>
+      <button onClick={increaseCount}>Increment</button>
     </div>
   )
-}
+} 
 
 export default App
